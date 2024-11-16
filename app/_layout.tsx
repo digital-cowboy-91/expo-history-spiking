@@ -5,7 +5,7 @@ import { StyleSheet, View } from "react-native";
 import NetworkInfo from "../components/NetworkInfo";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Layout() {
+export default function _layout() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />

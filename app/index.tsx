@@ -1,6 +1,6 @@
 import { Link } from "expo-router";
 
-export default function App() {
+export default function index() {
   return (
     <>
       <Link href="/legend-state">Test Legend-State (with Supabase)</Link>
