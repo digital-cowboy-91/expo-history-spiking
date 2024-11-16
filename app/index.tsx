@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Todos, { NewTodo } from "../components/Todos";
+import NetworkInfo from "../components/NetworkInfo";
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
       <Text>Expo Route Index</Text>
       <NewTodo />
       <Todos />
+      <NetworkInfo />
       <StatusBar style="auto" />
     </View>
   );
