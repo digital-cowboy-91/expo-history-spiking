@@ -5,6 +5,7 @@ import { StyleSheet, View } from "react-native";
 import NetworkInfo from "../components/NetworkInfo";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Geolocation from "../components/Geolocation";
+import "../global.css";
 
 export default function _layout() {
   return (

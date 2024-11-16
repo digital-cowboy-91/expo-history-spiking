@@ -1,6 +1,7 @@
 import Mapbox, { Camera, LocationPuck, MapView } from "@rnmapbox/maps";
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import PageTitle from "../../components/PageTitle";
 
 Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_PK);
 // Mapbox.setTelemetryEnabled(false);
@@ -31,7 +32,7 @@ export default function index() {
 
   return (
     <>
-      <Text>Mapbox Test Page</Text>
+      <PageTitle>Mapbox Test Page</PageTitle>
       <View style={styles.container}>
         <MapView style={styles.map} onPress={handleMapPress}>
           {/* <Camera zoomLevel={zoom} centerCoordinate={longLat} />
