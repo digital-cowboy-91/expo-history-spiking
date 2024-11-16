@@ -24,7 +24,9 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme=""/>
         <data android:scheme="com.dcolaia.expoblank"/>
+        <data android:scheme="exp+expo-blank"/>
       </intent-filter>
     </activity>
   </application>
