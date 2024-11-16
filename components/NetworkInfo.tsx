@@ -4,7 +4,7 @@ import { Button, FlatList, Text } from "react-native";
 
 const NetworkInfo = () => {
   const [conn, setConn] = useState<any | null>(null);
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((conn) => setConn(conn));
@@ -18,7 +18,7 @@ const NetworkInfo = () => {
     <>
       <Button
         onPress={() => setIsHidden(!isHidden)}
-        title={`Connection debug [${isHidden ? "SHOW" : "HIDE"}]`}
+        title={`Connection [${isHidden ? "SHOW" : "HIDE"}]`}
       />
       {!isHidden && (
         <FlatList

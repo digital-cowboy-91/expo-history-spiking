@@ -4,6 +4,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import NetworkInfo from "../components/NetworkInfo";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Geolocation from "../components/Geolocation";
 
 export default function _layout() {
   return (
@@ -14,6 +15,7 @@ export default function _layout() {
       </View>
       <View style={styles.footer}>
         <NetworkInfo />
+        <Geolocation />
       </View>
     </SafeAreaView>
   );
@@ -30,5 +32,9 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   body: {},
-  footer: {},
+  footer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 5,
+  },
 });

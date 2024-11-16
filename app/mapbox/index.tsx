@@ -1,5 +1,5 @@
-import Mapbox, { MapView } from "@rnmapbox/maps";
-import React from "react";
+import Mapbox, { Camera, LocationPuck, MapView } from "@rnmapbox/maps";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_PK);
@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
   },
   container: {
     height: 300,
-    width: 300,
-    backgroundColor: "tomato",
+    width: "100%",
   },
   map: {
     flex: 1,
@@ -23,12 +22,34 @@ const styles = StyleSheet.create({
 });
 
 export default function index() {
+  // const [userLocation, setUserLocation] = useState<any>(null);
+  const [coordinates, setCoordinates] = useState(null);
+
+  const handleMapPress = (e) => {
+    setCoordinates(e.geometry.coordinates);
+  };
+
   return (
     <>
       <Text>Mapbox Test Page</Text>
       <View style={styles.container}>
-        <MapView style={styles.map} />
+        <MapView style={styles.map} onPress={handleMapPress}>
+          {/* <Camera zoomLevel={zoom} centerCoordinate={longLat} />
+            <UserLocation
+            androidRenderMode="compass"
+            onUpdate={(location) => setUserLocation(location)}
+            showsUserHeadingIndicator
+            visible
+            /> */}
+          <Camera followUserLocation followZoomLevel={18} />
+          <LocationPuck
+            puckBearing="heading"
+            puckBearingEnabled
+            pulsing={{ isEnabled: true, color: "#000000" }}
+          />
+        </MapView>
       </View>
+      {coordinates && <Text>Geo on click: {JSON.stringify(coordinates)}</Text>}
     </>
   );
 }
