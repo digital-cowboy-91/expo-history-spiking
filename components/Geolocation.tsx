@@ -6,14 +6,26 @@ export default function Geolocation() {
   const [location, setLocation] =
     useState<Location.LocationObjectCoords | null>(null);
   const [isHidden, setIsHidden] = useState(true);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
-    Location.watchPositionAsync(
-      { accuracy: 6, timeInterval: 5000 },
-      ({ coords }) => {
-        setLocation(coords);
+    const getPermission = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return Promise.reject("NO_PERMISSION");
       }
-    );
+    };
+
+    getPermission().then(() => {
+      Location.watchPositionAsync(
+        { accuracy: 6, timeInterval: 5000 },
+        ({ coords }) => {
+          setLocation(coords);
+        }
+      );
+    });
   }, []);
 
   return (
@@ -34,7 +46,7 @@ export default function Geolocation() {
           />
         )
       ) : (
-        <Text>Permission not granted</Text>
+        <Text>{errorMsg}</Text>
       )}
     </>
   );
